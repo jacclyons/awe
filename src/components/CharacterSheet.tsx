@@ -127,7 +127,7 @@ export function CharacterSheet({
             variant="destructive"
             onClick={() => onDelete(character.id)}
           >
-            Delete character
+            Delete Character
           </Button>
         )}
       </footer>
