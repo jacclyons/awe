@@ -26,6 +26,15 @@
   --ring: oklch(0.556 0 0);
 }
 
+@keyframes awe-word-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @layer base {
   body {
     font-family: "Crimson Pro", Georgia, serif;

@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import type { AWECharacter } from "@/types/awe";
 import { getTier, getDice } from "@/lib/awe";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
+const AWE_WORDS = ["Agility", "Wit", "Endurance"] as const;
 
 interface Props {
   characters: AWECharacter[];
@@ -10,14 +13,28 @@ interface Props {
 }
 
 export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setWordIndex((i) => (i + 1) % AWE_WORDS.length);
+    }, 1500);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="space-y-6">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight text-primary">
           A.W.E. Characters
         </h1>
-        <p className="text-sm text-muted-foreground font-variant-small-caps tracking-widest">
-          Agility · Wit · Endurance
+        <p className="text-sm text-muted-foreground font-variant-small-caps tracking-widest min-h-[1.5em]">
+          <span
+            key={wordIndex}
+            className="inline-block animate-[awe-word-in_0.3s_ease-out]"
+          >
+            {AWE_WORDS[wordIndex]}
+          </span>
         </p>
         <Button className="w-full" size="lg" onClick={onCreateNew}>
           + New character
