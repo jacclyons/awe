@@ -18,6 +18,11 @@ export interface AWECharacter {
   pushCurrent: number;
   pushMax: number;
   pushDescription?: string;
+  photo?: string;
+  traits?: string;
+  ideals?: string;
+  bonds?: string;
+  flaws?: string;
   notes?: string;
   createdAt: number;
   updatedAt: number;

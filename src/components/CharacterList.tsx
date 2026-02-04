@@ -26,7 +26,7 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
     <div className="space-y-6">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight text-primary">
-          A.W.E. Characters
+          A.W.E. Character Creaation
         </h1>
         <p className="text-sm text-muted-foreground font-variant-small-caps tracking-widest min-h-[1.5em]">
           <span
@@ -62,12 +62,23 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
                   }
                 }}
               >
-                <CardHeader className="pb-1">
-                  <span className="text-lg font-semibold leading-tight">
-                    {c.name}
-                  </span>
-                </CardHeader>
-                <CardContent className="space-y-1 pt-0 text-sm text-muted-foreground">
+                <div className="flex gap-4 p-4">
+                  {c.photo && (
+                    <div className="shrink-0 w-14 h-14 rounded-lg border border-border overflow-hidden bg-muted/30">
+                      <img
+                        src={c.photo}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <CardHeader className="p-0 pb-1">
+                      <span className="text-lg font-semibold leading-tight">
+                        {c.name}
+                      </span>
+                    </CardHeader>
+                    <CardContent className="space-y-1 p-0 pt-0 text-sm text-muted-foreground">
                   <span>
                     A{c.attributes.agility} W{c.attributes.wit} E
                     {c.attributes.endurance} · {getTier(c.attributes.agility)} /{" "}
@@ -79,6 +90,8 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
                     {c.pushMax}
                   </span>
                 </CardContent>
+                  </div>
+                </div>
               </Card>
             </li>
           ))}

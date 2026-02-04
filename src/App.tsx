@@ -3,6 +3,7 @@ import { useCharacters } from "@/hooks/useCharacters";
 import { CharacterList } from "@/components/CharacterList";
 import { CharacterCreator } from "@/components/CharacterCreator";
 import { CharacterSheet } from "@/components/CharacterSheet";
+import { CharacterDetailsEditor } from "@/components/CharacterDetailsEditor";
 import { PushEditor } from "@/components/PushEditor";
 import {
   AlertDialog,
@@ -16,7 +17,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import type { AWECharacter } from "@/types/awe";
 
-type View = "list" | "create" | "view" | "editPush";
+type View = "list" | "create" | "view" | "editPush" | "editDetails";
 
 function App() {
   const {
@@ -53,6 +54,19 @@ function App() {
     updateCharacter(character.id, {
       pushCurrent: character.pushCurrent,
       pushDescription: character.pushDescription,
+    });
+    setView("view");
+  };
+
+  const handleSaveDetails = (character: AWECharacter) => {
+    updateCharacter(character.id, {
+      name: character.name,
+      photo: character.photo,
+      traits: character.traits,
+      ideals: character.ideals,
+      bonds: character.bonds,
+      flaws: character.flaws,
+      notes: character.notes,
     });
     setView("view");
   };
@@ -103,6 +117,7 @@ function App() {
             character={selected}
             onBack={handleBack}
             onEditPush={() => setView("editPush")}
+            onEditDetails={() => setView("editDetails")}
             onDelete={handleDeleteClick}
           />
         )}
@@ -110,6 +125,13 @@ function App() {
           <PushEditor
             character={selected}
             onSave={handleSavePush}
+            onCancel={() => setView("view")}
+          />
+        )}
+        {view === "editDetails" && selected && (
+          <CharacterDetailsEditor
+            character={selected}
+            onSave={handleSaveDetails}
             onCancel={() => setView("view")}
           />
         )}
