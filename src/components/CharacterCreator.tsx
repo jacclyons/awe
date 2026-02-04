@@ -36,9 +36,9 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
   const [name, setName] = useState("");
   const [startType, setStartType] = useState<StartType>("vanilla");
   const [attributes, setAttributes] = useState<AWEAttributes>({
-    agility: 3,
-    wit: 3,
-    endurance: 4,
+    agility: 0,
+    wit: 0,
+    endurance: 0,
   });
   const [pushDescription, setPushDescription] = useState("");
   const [notes, setNotes] = useState("");
@@ -47,9 +47,9 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
     startType === "vanilla" ? VANILLA_POINTS : PUSH_START_POINTS;
   const pushMax = startType === "vanilla" ? VANILLA_PUSH : PUSH_START_PUSH;
   const used =
-    attributes.agility + attributes.wit + attributes.endurance - MIN_ATTR * 3;
+    attributes.agility + attributes.wit + attributes.endurance;
   const pointsLeft = pointsPool - used;
-  const valid = name.trim() !== "" && pointsLeft === 0 && used >= 0;
+  const valid = name.trim() !== "" && pointsLeft >= 0;
 
   function setAttr(key: keyof AWEAttributes, value: number) {
     const n = Math.max(MIN_ATTR, Math.min(MAX_ATTR, value));
@@ -120,7 +120,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
       <Card>
         <CardHeader className="pb-2">
           <Label className="text-muted-foreground">
-            Attributes (1–10) — {pointsLeft} point
+            Attributes (0–10) — {pointsLeft} point
             {pointsLeft !== 1 ? "s" : ""} left
           </Label>
         </CardHeader>
@@ -157,7 +157,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
                   size="icon"
                   className="h-8 w-8"
                   onClick={() => setAttr(key, attributes[key] + 1)}
-                  disabled={attributes[key] >= MAX_ATTR}
+                  disabled={attributes[key] >= MAX_ATTR || pointsLeft <= 0}
                   aria-label={`Increase ${LABELS[key]}`}
                 >
                   +
@@ -203,11 +203,11 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         {!valid && (
           <p className="text-sm text-muted-foreground order-last sm:order-first">
-            {pointsLeft > 0
-              ? `Spend all ${pointsLeft} point${pointsLeft !== 1 ? "s" : ""} in attributes to save.`
-              : !name.trim()
-                ? "Enter a name to save."
-                : "Spend all points in attributes to save."}
+            {!name.trim()
+              ? "Enter a name to save."
+              : pointsLeft < 0
+                ? `You've overspent by ${-pointsLeft} point${-pointsLeft !== 1 ? "s" : ""}. Reduce attributes.`
+                : null}
           </p>
         )}
         <div className="flex gap-3 justify-end sm:justify-end">
