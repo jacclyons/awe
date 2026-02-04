@@ -37,10 +37,18 @@
 
 @layer base {
   body {
-    font-family: "Crimson Pro", Georgia, serif;
+    font-family: Ovo, Georgia, serif;
     font-size: 1.1rem;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Zalando Sans Expanded", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  p {
+    font-family: Ovo, Georgia, serif;
   }
 }

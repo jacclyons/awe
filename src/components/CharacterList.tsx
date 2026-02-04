@@ -26,7 +26,7 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
     <div className="space-y-6">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight text-primary">
-          A.W.E. Character Creaation
+          A.W.E. Character Creation
         </h1>
         <p className="text-sm text-muted-foreground font-variant-small-caps tracking-widest min-h-[1.5em]">
           <span
