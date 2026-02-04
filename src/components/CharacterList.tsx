@@ -4,7 +4,11 @@ import { getTier, getDice } from "@/lib/awe";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
-const AWE_WORDS = ["Agility", "Wit", "Endurance"] as const;
+const AWE_WORDS = [
+  { label: "AGILITY", icon: "/agility.svg" },
+  { label: "WIT", icon: "/wit.svg" },
+  { label: "ENDURANCE", icon: "/endurance.svg" },
+] as const;
 
 interface Props {
   characters: AWECharacter[];
@@ -24,18 +28,23 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
 
   return (
     <div className="space-y-5">
-      <header className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight text-primary">
-          A.W.E. Character Creation
+      <header className="flex flex-row flex-wrap items-center justify-start gap-x-8 gap-y-1">
+        <h1 className="text-2xl font-semibold tracking-tight text-primary shrink-0">
+          A.W.E.
         </h1>
-        <p className="text-sm text-muted-foreground font-variant-small-caps tracking-widest min-h-[1.5em]">
-          <span
-            key={wordIndex}
-            className="inline-block animate-[awe-word-in_0.3s_ease-out]"
-          >
-            {AWE_WORDS[wordIndex]}
+        <div
+          key={wordIndex}
+          className="flex items-center gap-x-8 shrink-0 animate-[awe-word-in_0.3s_ease-out]"
+        >
+          <img
+            src={AWE_WORDS[wordIndex].icon}
+            alt=""
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+          />
+          <span className="text-2xl font-semibold tracking-tight font-variant-small-caps tracking-widest text-muted-foreground">
+            {AWE_WORDS[wordIndex].label}
           </span>
-        </p>
+        </div>
       </header>
 
       {characters.length === 0 ? (
