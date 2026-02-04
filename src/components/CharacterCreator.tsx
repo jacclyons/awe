@@ -106,14 +106,14 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
             onValueChange={(v) => setStartType(v as StartType)}
             className="flex flex-col gap-3"
           >
-            <label className="flex items-center gap-2 cursor-pointer">
-              <RadioGroupItem value="vanilla" />
+            <label className="flex items-center gap-3 cursor-pointer py-3 min-h-[44px] touch-manipulation">
+              <RadioGroupItem value="vanilla" className="shrink-0" />
               <span>
                 Vanilla — {VANILLA_POINTS} points, {VANILLA_PUSH} Push
               </span>
             </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <RadioGroupItem value="push" />
+            <label className="flex items-center gap-3 cursor-pointer py-3 min-h-[44px] touch-manipulation">
+              <RadioGroupItem value="push" className="shrink-0" />
               <span>
                 Push start — {PUSH_START_POINTS} points, {PUSH_START_PUSH} Push
               </span>
@@ -124,7 +124,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
 
       <Card>
         <CardHeader className="pb-2">
-          <Label className="text-muted-foreground">
+          <Label className="text-muted-foreground text-sm sm:text-base">
             Attributes (0–10, min 1 to save) — {pointsLeft} point
             {pointsLeft !== 1 ? "s" : ""} left
           </Label>

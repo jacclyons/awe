@@ -28,7 +28,7 @@ export function PushEditor({ character, onSave, onCancel }: Props) {
 
   return (
     <div className="space-y-6 py-2">
-      <h2 className="text-xl font-semibold tracking-tight">
+      <h2 className="text-lg sm:text-xl font-semibold tracking-tight truncate">
         Edit Push — {character.name}
       </h2>
 

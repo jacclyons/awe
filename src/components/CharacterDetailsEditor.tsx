@@ -87,7 +87,7 @@ export function CharacterDetailsEditor({ character, onSave, onCancel }: Props) {
                 fileInputRef.current?.click();
               }
             }}
-            className="w-24 h-24 min-w-[6rem] min-h-[6rem] rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring self-start"
+            className="w-24 h-24 min-w-[6rem] min-h-[6rem] rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary/50 active:opacity-90 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring self-start touch-manipulation"
           >
             {photo ? (
               <img

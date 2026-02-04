@@ -10,6 +10,21 @@
     <title>AWE Character Creation</title>
   </head>
   <body>
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('awe-theme');
+          if (t) {
+            var p = JSON.parse(t);
+            if (p.mode) document.documentElement.setAttribute('data-theme', p.mode);
+            if (p.color) document.documentElement.setAttribute('data-color', p.color);
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.setAttribute('data-color', 'monochrome');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

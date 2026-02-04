@@ -28,20 +28,20 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
 
   return (
     <div className="space-y-5">
-      <header className="flex flex-row flex-wrap items-center justify-start gap-x-8 gap-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight text-primary shrink-0">
+      <header className="flex flex-row flex-wrap items-center justify-start gap-x-4 sm:gap-x-8 gap-y-1">
+        <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-primary shrink-0">
           A.W.E.
         </h1>
         <div
           key={wordIndex}
-          className="flex items-center gap-x-8 shrink-0 animate-[awe-word-in_0.3s_ease-out]"
+          className="flex items-center gap-x-4 sm:gap-x-8 shrink-0 animate-[awe-word-in_0.3s_ease-out]"
         >
           <img
             src={AWE_WORDS[wordIndex].icon}
             alt=""
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+            className="w-7 h-7 sm:w-10 sm:h-10 object-contain"
           />
-          <span className="text-2xl font-semibold tracking-tight font-variant-small-caps tracking-widest text-muted-foreground">
+          <span className="text-xl sm:text-2xl font-semibold tracking-tight font-variant-small-caps tracking-widest text-muted-foreground">
             {AWE_WORDS[wordIndex].label}
           </span>
         </div>
@@ -58,7 +58,7 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
               <Card
                 role="button"
                 tabIndex={0}
-                className="cursor-pointer transition-colors hover:border-primary/50 hover:bg-accent/50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="cursor-pointer transition-colors hover:border-primary/50 hover:bg-accent/50 active:bg-accent/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring touch-manipulation"
                 onClick={() => onSelect(c.id)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -103,7 +103,7 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
         </ul>
       )}
 
-      <Button className="w-full min-h-[44px]" size="lg" onClick={onCreateNew}>
+      <Button className="w-full min-h-[44px] touch-manipulation" size="lg" onClick={onCreateNew}>
         + New character
       </Button>
 

@@ -8,10 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Ovo&family=Zalando+Sans+Expanded:wght@400;600;700&display=swap" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>AWE Character Creation</title>
-    <script type="module" crossorigin src="/assets/index-BflaXVE0.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Cf3F5AaX.css">
+    <script type="module" crossorigin src="/assets/index-Kuy35kCL.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B2PZ2b4C.css">
   </head>
   <body>
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('awe-theme');
+          if (t) {
+            var p = JSON.parse(t);
+            if (p.mode) document.documentElement.setAttribute('data-theme', p.mode);
+            if (p.color) document.documentElement.setAttribute('data-color', p.color);
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.setAttribute('data-color', 'monochrome');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
   </body>
 </html>

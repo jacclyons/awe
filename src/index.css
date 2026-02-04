@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* shadcn/ui theme – neutral dark (default for AWE) */
-:root {
+/* Theme – default: dark + monochrome */
+:root,
+[data-theme="dark"][data-color="monochrome"] {
   --radius: 0.625rem;
   --background: #2b2b2b;
   --foreground: #ffffff;
@@ -24,6 +25,157 @@
   --border: #ffffff1a;
   --input: #ffffff1a;
   --ring: #ffffff;
+}
+
+/* Dark + Green */
+[data-theme="dark"][data-color="green"] {
+  --primary: #86efac;
+  --primary-foreground: #14532d;
+  --accent: #166534;
+  --accent-foreground: #dcfce7;
+  --ring: #22c55e;
+}
+
+/* Dark + Blue */
+[data-theme="dark"][data-color="blue"] {
+  --primary: #93c5fd;
+  --primary-foreground: #1e3a8a;
+  --accent: #1e40af;
+  --accent-foreground: #dbeafe;
+  --ring: #3b82f6;
+}
+
+/* Dark + Orange */
+[data-theme="dark"][data-color="orange"] {
+  --primary: #fdba74;
+  --primary-foreground: #7c2d12;
+  --accent: #c2410c;
+  --accent-foreground: #ffedd5;
+  --ring: #f97316;
+}
+
+/* Dark + Red */
+[data-theme="dark"][data-color="red"] {
+  --primary: #fca5a5;
+  --primary-foreground: #7f1d1d;
+  --accent: #b91c1c;
+  --accent-foreground: #fee2e2;
+  --ring: #ef4444;
+}
+
+/* Light + Monochrome */
+[data-theme="light"][data-color="monochrome"] {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #262626;
+  --primary-foreground: #fafafa;
+  --secondary: #e5e5e5;
+  --secondary-foreground: #171717;
+  --muted: #e5e5e5;
+  --muted-foreground: #525252;
+  --accent: #d4d4d4;
+  --accent-foreground: #171717;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #0000001a;
+  --input: #0000001a;
+  --ring: #262626;
+}
+
+/* Light + Green */
+[data-theme="light"][data-color="green"] {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #15803d;
+  --primary-foreground: #f0fdf4;
+  --secondary: #dcfce7;
+  --secondary-foreground: #14532d;
+  --muted: #dcfce7;
+  --muted-foreground: #166534;
+  --accent: #bbf7d0;
+  --accent-foreground: #14532d;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #22c55e33;
+  --input: #22c55e1a;
+  --ring: #22c55e;
+}
+
+/* Light + Blue */
+[data-theme="light"][data-color="blue"] {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #1d4ed8;
+  --primary-foreground: #eff6ff;
+  --secondary: #dbeafe;
+  --secondary-foreground: #1e40af;
+  --muted: #dbeafe;
+  --muted-foreground: #1e40af;
+  --accent: #bfdbfe;
+  --accent-foreground: #1e3a8a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #3b82f633;
+  --input: #3b82f61a;
+  --ring: #3b82f6;
+}
+
+/* Light + Orange */
+[data-theme="light"][data-color="orange"] {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #c2410c;
+  --primary-foreground: #fff7ed;
+  --secondary: #ffedd5;
+  --secondary-foreground: #9a3412;
+  --muted: #ffedd5;
+  --muted-foreground: #c2410c;
+  --accent: #fed7aa;
+  --accent-foreground: #7c2d12;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #f9731633;
+  --input: #f973161a;
+  --ring: #f97316;
+}
+
+/* Light + Red */
+[data-theme="light"][data-color="red"] {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #b91c1c;
+  --primary-foreground: #fef2f2;
+  --secondary: #fee2e2;
+  --secondary-foreground: #991b1b;
+  --muted: #fee2e2;
+  --muted-foreground: #b91c1c;
+  --accent: #fecaca;
+  --accent-foreground: #7f1d1d;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #ef444433;
+  --input: #ef44441a;
+  --ring: #ef4444;
 }
 
 @keyframes awe-word-in {

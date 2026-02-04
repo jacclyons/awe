@@ -15,6 +15,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { ThemeDropdown } from "@/components/ThemeDropdown";
 import type { AWECharacter } from "@/types/awe";
 
 type View = "list" | "create" | "view" | "editPush" | "editDetails";
@@ -97,7 +98,10 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))] overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))] overflow-x-hidden relative">
+      <div className="fixed top-4 right-4 z-40 sm:top-6 sm:right-6">
+        <ThemeDropdown />
+      </div>
       <main className="max-w-[520px] mx-auto sm:max-w-[560px] w-full min-w-0">
         {view === "list" && (
           <CharacterList
