@@ -23,7 +23,7 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight text-primary">
           A.W.E. Character Creation
@@ -36,16 +36,12 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
             {AWE_WORDS[wordIndex]}
           </span>
         </p>
-        <Button className="w-full" size="lg" onClick={onCreateNew}>
-          + New character
-        </Button>
       </header>
 
       {characters.length === 0 ? (
-        <div className="flex flex-col items-center justify-center gap-4 py-12 text-center text-muted-foreground">
-          <p>No characters yet. Create one to get started.</p>
-          <Button onClick={onCreateNew}>Create first character</Button>
-        </div>
+        <p className="py-8 text-center text-muted-foreground">
+          No characters yet. Create one to get started.
+        </p>
       ) : (
         <ul className="space-y-2">
           {characters.map((c) => (
@@ -62,9 +58,9 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
                   }
                 }}
               >
-                <div className="flex gap-4 p-4">
+                <div className="flex gap-3 sm:gap-4 p-3 sm:p-4">
                   {c.photo && (
-                    <div className="shrink-0 w-14 h-14 rounded-lg border border-border overflow-hidden bg-muted/30">
+                    <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border overflow-hidden bg-muted/30">
                       <img
                         src={c.photo}
                         alt=""
@@ -74,7 +70,7 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
                   )}
                   <div className="flex-1 min-w-0">
                     <CardHeader className="p-0 pb-1">
-                      <span className="text-lg font-semibold leading-tight">
+                      <span className="text-base sm:text-lg font-semibold leading-tight break-words">
                         {c.name}
                       </span>
                     </CardHeader>
@@ -97,6 +93,10 @@ export function CharacterList({ characters, onSelect, onCreateNew }: Props) {
           ))}
         </ul>
       )}
+
+      <Button className="w-full min-h-[44px]" size="lg" onClick={onCreateNew}>
+        + New character
+      </Button>
 
       <p className="text-center text-xs text-muted-foreground">
         Saved locally in this browser.

@@ -50,7 +50,12 @@ export function CharacterSheet({
 
   return (
     <article className="space-y-6 pb-8">
-      <header className="flex flex-row gap-4 pb-4 border-b border-border">
+      <div className="flex justify-start mb-2">
+        <Button type="button" variant="outline" size="sm" onClick={onBack} className="min-h-[44px]">
+          ← Back to list
+        </Button>
+      </div>
+      <header className="flex flex-row gap-3 sm:gap-4 pb-4 border-b border-border">
         <div className="flex-1 min-w-0 space-y-1">
           <h1 className="text-2xl font-semibold tracking-tight">
             {character.name}
@@ -63,7 +68,7 @@ export function CharacterSheet({
           <button
             type="button"
             onClick={() => onEditDetails(character)}
-            className="shrink-0 w-20 h-20 rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring min-w-[4rem] min-h-[4rem]"
           >
             {photo ? (
               <img
@@ -78,7 +83,7 @@ export function CharacterSheet({
             )}
           </button>
         ) : (
-          <div className="shrink-0 w-20 h-20 rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center">
+          <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center">
             {photo ? (
               <img
                 src={photo}
@@ -102,13 +107,13 @@ export function CharacterSheet({
           {(["agility", "wit", "endurance"] as const).map((key) => (
             <li
               key={key}
-              className="grid grid-cols-[1fr_auto_auto_auto] gap-3 items-center py-2 border-b border-border last:border-0 text-sm"
+              className="grid grid-cols-[minmax(0,1fr)_auto_auto_auto] gap-2 sm:gap-3 items-center py-3 border-b border-border last:border-0 text-sm"
             >
-              <span className="font-medium">{LABELS[key]}</span>
+              <span className="font-medium truncate">{LABELS[key]}</span>
               <span className="font-mono font-medium text-primary">
                 {attributes[key]}
               </span>
-              <span className="text-muted-foreground">
+              <span className="text-muted-foreground text-xs sm:text-sm truncate max-w-[4.5rem] sm:max-w-none">
                 {getTier(attributes[key])}
               </span>
               <span className="font-mono text-muted-foreground text-xs">
@@ -207,20 +212,18 @@ export function CharacterSheet({
 
       <Separator />
 
-      <footer className="flex flex-wrap gap-3 justify-between pt-2">
-        <Button type="button" variant="outline" onClick={onBack}>
-          ← Back to list
-        </Button>
-        {onDelete && (
+      {onDelete && (
+        <footer className="pt-2">
           <Button
             type="button"
             variant="destructive"
             onClick={() => onDelete(character.id)}
+            className="w-full sm:w-auto min-h-[44px]"
           >
             Delete Character
           </Button>
-        )}
-      </footer>
+        </footer>
+      )}
     </article>
   );
 }

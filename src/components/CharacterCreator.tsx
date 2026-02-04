@@ -146,7 +146,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
                   type="button"
                   variant="outline"
                   size="icon"
-                  className="h-8 w-8"
+                  className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0"
                   onClick={() => setAttr(key, attributes[key] - 1)}
                   disabled={attributes[key] <= 0}
                   aria-label={`Decrease ${LABELS[key]}`}
@@ -160,7 +160,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
                   type="button"
                   variant="outline"
                   size="icon"
-                  className="h-8 w-8"
+                  className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0"
                   onClick={() => setAttr(key, attributes[key] + 1)}
                   disabled={attributes[key] >= MAX_ATTR || pointsLeft <= 0}
                   aria-label={`Increase ${LABELS[key]}`}
@@ -217,11 +217,11 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
                   : null}
           </p>
         )}
-        <div className="flex gap-3 justify-end sm:justify-end">
-          <Button type="button" variant="outline" onClick={onCancel}>
+        <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
+          <Button type="button" variant="outline" onClick={onCancel} className="w-full sm:w-auto min-h-[44px]">
             Cancel
           </Button>
-          <Button type="submit" disabled={!valid}>
+          <Button type="submit" disabled={!valid} className="w-full sm:w-auto min-h-[44px]">
             Save character
           </Button>
         </div>

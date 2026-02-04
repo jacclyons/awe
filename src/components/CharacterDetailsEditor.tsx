@@ -57,7 +57,7 @@ export function CharacterDetailsEditor({ character, onSave, onCancel }: Props) {
         Edit character details
       </h2>
 
-      <div className="flex flex-row gap-4 items-start">
+      <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-start">
         <div className="flex-1 space-y-2 min-w-0">
           <Label htmlFor="name">Name</Label>
           <Input
@@ -87,7 +87,7 @@ export function CharacterDetailsEditor({ character, onSave, onCancel }: Props) {
                 fileInputRef.current?.click();
               }
             }}
-            className="w-24 h-24 rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="w-24 h-24 min-w-[6rem] min-h-[6rem] rounded-lg border border-border bg-muted/30 overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring self-start"
           >
             {photo ? (
               <img
@@ -153,11 +153,11 @@ export function CharacterDetailsEditor({ character, onSave, onCancel }: Props) {
         />
       </div>
 
-      <div className="flex gap-3 justify-end">
-        <Button type="button" variant="outline" onClick={onCancel}>
+      <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
+        <Button type="button" variant="outline" onClick={onCancel} className="w-full sm:w-auto min-h-[44px]">
           Cancel
         </Button>
-        <Button type="submit">Save</Button>
+        <Button type="submit" className="w-full sm:w-auto min-h-[44px]">Save</Button>
       </div>
     </form>
   );

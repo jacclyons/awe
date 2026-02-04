@@ -97,8 +97,8 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-6">
-      <main className="max-w-[520px] mx-auto sm:max-w-[560px]">
+    <div className="min-h-screen bg-background text-foreground p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))] overflow-x-hidden">
+      <main className="max-w-[520px] mx-auto sm:max-w-[560px] w-full min-w-0">
         {view === "list" && (
           <CharacterList
             characters={characters}

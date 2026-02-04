@@ -39,7 +39,7 @@ export function PushEditor({ character, onSave, onCancel }: Props) {
             type="button"
             variant="outline"
             size="icon"
-            className="h-9 w-9"
+            className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0"
             onClick={() => setPushCurrent((p) => Math.max(0, p - 1))}
             disabled={pushCurrent <= 0}
           >
@@ -52,7 +52,7 @@ export function PushEditor({ character, onSave, onCancel }: Props) {
             type="button"
             variant="outline"
             size="icon"
-            className="h-9 w-9"
+            className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0"
             onClick={() => setPushCurrent((p) => Math.min(max, p + 1))}
             disabled={pushCurrent >= max}
           >
@@ -72,11 +72,11 @@ export function PushEditor({ character, onSave, onCancel }: Props) {
         />
       </div>
 
-      <div className="flex gap-3 justify-end">
-        <Button type="button" variant="outline" onClick={onCancel}>
+      <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
+        <Button type="button" variant="outline" onClick={onCancel} className="w-full sm:w-auto min-h-[44px]">
           Cancel
         </Button>
-        <Button type="button" onClick={handleSave}>
+        <Button type="button" onClick={handleSave} className="w-full sm:w-auto min-h-[44px]">
           Save
         </Button>
       </div>

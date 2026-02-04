@@ -36,11 +36,17 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     font-family: Ovo, Georgia, serif;
     font-size: 1.1rem;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
     @apply bg-background text-foreground;
   }
 
