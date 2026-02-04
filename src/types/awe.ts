@@ -23,10 +23,10 @@ export interface AWECharacter {
   updatedAt: number;
 }
 
-export const VANILLA_POINTS = 13;
+export const VANILLA_POINTS = 10;
 export const VANILLA_PUSH = 2;
-export const PUSH_START_POINTS = 9;
+export const PUSH_START_POINTS = 6;
 export const PUSH_START_PUSH = 4;
 
-export const MIN_ATTR = 0;
+export const MIN_ATTR = 1;
 export const MAX_ATTR = 10;

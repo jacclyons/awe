@@ -36,9 +36,9 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
   const [name, setName] = useState("");
   const [startType, setStartType] = useState<StartType>("vanilla");
   const [attributes, setAttributes] = useState<AWEAttributes>({
-    agility: 0,
-    wit: 0,
-    endurance: 0,
+    agility: 1,
+    wit: 1,
+    endurance: 1,
   });
   const [pushDescription, setPushDescription] = useState("");
   const [notes, setNotes] = useState("");
@@ -47,7 +47,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
     startType === "vanilla" ? VANILLA_POINTS : PUSH_START_POINTS;
   const pushMax = startType === "vanilla" ? VANILLA_PUSH : PUSH_START_PUSH;
   const used =
-    attributes.agility + attributes.wit + attributes.endurance;
+    attributes.agility + attributes.wit + attributes.endurance - MIN_ATTR * 3;
   const pointsLeft = pointsPool - used;
   const valid = name.trim() !== "" && pointsLeft >= 0;
 
@@ -120,7 +120,7 @@ export function CharacterCreator({ onSave, onCancel }: Props) {
       <Card>
         <CardHeader className="pb-2">
           <Label className="text-muted-foreground">
-            Attributes (0–10) — {pointsLeft} point
+            Attributes (1–10) — {pointsLeft} point
             {pointsLeft !== 1 ? "s" : ""} left
           </Label>
         </CardHeader>
